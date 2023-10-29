@@ -44,26 +44,6 @@
             }
         }
     </style>
-    <!-- <script>
-    function checkBoxFunc() {
-        // the selector will match all input controls of type :checkbox
-        // and attach a click event handler 
-        $("input:checkbox").on('click', function() {
-        // in the handler, 'this' refers to the box clicked on
-        var $box = $(this);
-        if ($box.is(":checked")) {
-            // the name of the box is retrieved using the .attr() method
-            // as it is assumed and expected to be immutable
-            var group = "input:checkbox[name='" + $box.attr("name") + "']";
-            // the checked state of the group/box on the other hand will change
-            // and the current value is retrieved using .prop() method
-            $(group).prop("checked", false);
-            $box.prop("checked", true);
-        } else {
-            $box.prop("checked", false);
-        }
-    }
-</script> -->
 </head>
 
 <body class="w3-black">
@@ -84,10 +64,6 @@
             <i class="fa fa-eye w3-xxlarge"></i>
             <p>GENERATE</p>
         </a>
-        <!-- <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-            <i class="fa fa-envelope w3-xxlarge"></i>
-            <p>QUESTIONS?</p>
-        </a> -->
     </nav>
 
     <!-- Navbar on small screens (Hidden on medium and large screens) -->
@@ -117,49 +93,17 @@
             <hr style="width:200px" class="w3-opacity">
             <p>
             </p>
-            <!-- <h3 class="w3-padding-16 w3-text-light-grey">Inputs</h3> -->
             <p class="w3-wide w3-xlarge"><b>Subject Matter</b></p>
             <p class="w3-text-white">This tells the model what to generate. It is the main part of the prompt.</p>
-            <!-- <div class="w3-white">
-      <div class="w3-dark-grey" style="height:28px;width:95%"></div>
-    </div> -->
+            
             <p class="w3-wide w3-xlarge"><b>Art Style</b></p>
             <p class="w3-text-white">This input tells the model how to generate your image. Whether you want a
                 photograph-like image or something that looks like it was made using origami, the model will generate
                 your subject matter adhering to this choice!</p>
-            <!-- <div class="w3-white">
-      <div class="w3-dark-grey" style="height:28px;width:85%"></div>
-    </div> -->
 
             <p class="w3-wide w3-xlarge"><b>Color Scheme</b></p>
             <p class="w3-text-white">If you're feeling fun and want the model to create a colorful image or you have a
                 favorite color that you want your image to be, your needs are met through this color selection.</p>
-            <!-- <div class="w3-white">
-      <div class="w3-dark-grey" style="height:28px;width:80%"></div>
-    </div><br> -->
-            <!--     
-    <div class="w3-row w3-center w3-padding-16 w3-section w3-light-grey">
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge">11+</span><br>
-        Partners
-      </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge">55+</span><br>
-        Projects Done
-      </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge">89+</span><br>
-        Happy Clients
-      </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge">150+</span><br>
-        Meetings
-      </div>
-    </div>
-
-    <button class="w3-button w3-light-grey w3-padding-large w3-section">
-      <i class="fa fa-download"></i> Download Resume
-    </button> -->
             <h3 class="w3-padding-24"> </h3>
             <!-- Grid for pricing tables -->
             <h3 class="w3-padding-16 w3-text-light-grey w3-xxlarge">Examples</h3>
@@ -171,13 +115,11 @@
                         <li class="w3-padding-16">Black and white</li>
                         <li class="w3-padding-16">Single color</li>
                         <li class="w3-padding-16">Multi-color</li>
-                        <!-- <li class="w3-padding-16">Mail Support</li> -->
                         <li class="w3-padding-16">
                             <h2>Choose your color...</h2>
                             <span class="w3-opacity">and generate an image now!</span>
                         </li>
                         <li class="w3-light-grey w3-padding-24">
-                            <!-- <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button> -->
                         </li>
                     </ul>
                 </div>
@@ -194,7 +136,6 @@
                             <span class="w3-opacity">How will you design your art?</span>
                         </li>
                         <li class="w3-light-grey w3-padding-24">
-                            <!-- <button class="w3-button w3-white w3-padding-large w3-hover-black" href="#about">Sign Up</button> -->
                         </li>
                     </ul>
                 </div>
@@ -325,34 +266,6 @@
             </div>
             <!-- End Portfolio Section -->
         </div>
-
-        <!-- Contact Section
-        <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
-            <h2 class="w3-text-light-grey">Contact Me</h2>
-            <hr style="width:200px" class="w3-opacity">
-
-            <div class="w3-section">
-                <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> University of Notre
-                    Dame, Indiana</p>
-                <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: +1 224 518 6764</p>
-                <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: ckuczun@nd.edu
-                </p>
-            </div><br>
-            <p>Questions or problems?</p>
-
-            <form action="/action_page.php" target="_blank">
-                <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
-                <p><input class="w3-input w3-padding-16" type="text" placeholder="Email" required name="Email"></p>
-                <p><input class="w3-input w3-padding-16" type="text" placeholder="Subject" required name="Subject"></p>
-                <p><input class="w3-input w3-padding-16" type="text" placeholder="Message" required name="Message"></p>
-                <p>
-                    <button class="w3-button w3-light-grey w3-padding-large" type="submit">
-                        <i class="fa fa-paper-plane"></i> SEND MESSAGE
-                    </button>
-                </p>
-            </form> -->
-            <!-- End Contact Section -->
-        <!-- </div> -->
 
         <!-- Footer -->
         <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
