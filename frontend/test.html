@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MindInk</title>
+    <link rel="icon" type="image/x-icon" href="/images/mindink-logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="test-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Montserrat", sans-serif
+        }
+
+        .w3-row-padding img {
+            margin-bottom: 12px
+        }
+
+        /* Set the width of the sidebar to 120px */
+        .w3-sidebar {
+            width: 120px;
+            background: #222;
+        }
+
+        /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+        #main {
+            margin-left: 120px
+        }
+
+        /* Remove margins from "page content" on small screens */
+        @media only screen and (max-width: 600px) {
+            #main {
+                margin-left: 0
+            }
+        }
+    </style>
+    <!-- <script>
+    function checkBoxFunc() {
+        // the selector will match all input controls of type :checkbox
+        // and attach a click event handler 
+        $("input:checkbox").on('click', function() {
+        // in the handler, 'this' refers to the box clicked on
+        var $box = $(this);
+        if ($box.is(":checked")) {
+            // the name of the box is retrieved using the .attr() method
+            // as it is assumed and expected to be immutable
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+            // the checked state of the group/box on the other hand will change
+            // and the current value is retrieved using .prop() method
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+        } else {
+            $box.prop("checked", false);
+        }
+    }
+</script> -->
+</head>
+
+<body class="w3-black">
+
+    <!-- Icon Bar (Sidebar - hidden on small screens) -->
+    <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+        <!-- Avatar image in top left corner -->
+        <img src="images/mindink-logo.png" style="width:100%">
+        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+            <i class="fa fa-home w3-xxlarge"></i>
+            <p>HOME</p>
+        </a>
+        <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+            <i class="fa fa-user w3-xxlarge"></i>
+            <p>HOW DOES IT WORK?</p>
+        </a>
+        <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+            <i class="fa fa-eye w3-xxlarge"></i>
+            <p>GENERATE</p>
+        </a>
+        <!-- <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+            <i class="fa fa-envelope w3-xxlarge"></i>
+            <p>QUESTIONS?</p>
+        </a> -->
+    </nav>
+
+    <!-- Navbar on small screens (Hidden on medium and large screens) -->
+    <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+        <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+            <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+            <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
+            <a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">PHOTOS</a>
+            <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="w3-padding-large" id="main">
+        <!-- Header/Home -->
+        <header class="w3-container w3-padding-32 w3-center w3-black" id="home">  
+            <h1 class="w3-jumbo"><span class="w3-hide-small"></span><b>MindInk</b></h1>
+            <p>Make your imagination reality. </p>
+            <p><i>Generate art using any style, subject matter, color, and pattern that you want. </i></p>
+            <p></p>
+            <img src="images/majestic-horse.png" alt="majestic-horse" class="w3-image" width="992" height="1108">
+        </header>
+
+        <!-- About Section -->
+        <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+            <h2 class="w3-text-light-grey"><b>How do your inputs work together to generate your art?</b></h2>
+            <hr style="width:200px" class="w3-opacity">
+            <p>
+            </p>
+            <!-- <h3 class="w3-padding-16 w3-text-light-grey">Inputs</h3> -->
+            <p class="w3-wide w3-xlarge"><b>Subject Matter</b></p>
+            <p class="w3-text-white">This tells the model what to generate. It is the main part of the prompt.</p>
+            <!-- <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:95%"></div>
+    </div> -->
+            <p class="w3-wide w3-xlarge"><b>Art Style</b></p>
+            <p class="w3-text-white">This input tells the model how to generate your image. Whether you want a
+                photograph-like image or something that looks like it was made using origami, the model will generate
+                your subject matter adhering to this choice!</p>
+            <!-- <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:85%"></div>
+    </div> -->
+
+            <p class="w3-wide w3-xlarge"><b>Color Scheme</b></p>
+            <p class="w3-text-white">If you're feeling fun and want the model to create a colorful image or you have a
+                favorite color that you want your image to be, your needs are met through this color selection.</p>
+            <!-- <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:80%"></div>
+    </div><br> -->
+            <!--     
+    <div class="w3-row w3-center w3-padding-16 w3-section w3-light-grey">
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">11+</span><br>
+        Partners
+      </div>
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">55+</span><br>
+        Projects Done
+      </div>
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">89+</span><br>
+        Happy Clients
+      </div>
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">150+</span><br>
+        Meetings
+      </div>
+    </div>
+
+    <button class="w3-button w3-light-grey w3-padding-large w3-section">
+      <i class="fa fa-download"></i> Download Resume
+    </button> -->
+            <h3 class="w3-padding-24"> </h3>
+            <!-- Grid for pricing tables -->
+            <h3 class="w3-padding-16 w3-text-light-grey w3-xxlarge">Examples</h3>
+            <div class="w3-row-padding" style="margin:0 -16px">
+                <div class="w3-half w3-margin-bottom">
+                    <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+                        <li class="w3-dark-grey w3-xlarge w3-padding-32">Change color!</li>
+                        <img src="images/bw-horse.png" style="width:100%">
+                        <li class="w3-padding-16">Black and white</li>
+                        <li class="w3-padding-16">Single color</li>
+                        <li class="w3-padding-16">Multi-color</li>
+                        <!-- <li class="w3-padding-16">Mail Support</li> -->
+                        <li class="w3-padding-16">
+                            <h2>Choose your color...</h2>
+                            <span class="w3-opacity">and generate an image now!</span>
+                        </li>
+                        <li class="w3-light-grey w3-padding-24">
+                            <!-- <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button> -->
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="w3-half">
+                    <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+                        <li class="w3-dark-grey w3-xlarge w3-padding-32">Change art style!</li>
+                        <img src="images/pixel-horse.png" style="width:100%">
+                        <li class="w3-padding-16">Paintbrush</li>
+                        <li class="w3-padding-16">Pixel art</li>
+                        <li class="w3-padding-16">Photography</li>
+                        <li class="w3-padding-16">
+                            <h2>So many options!</h2>
+                            <span class="w3-opacity">How will you design your art?</span>
+                        </li>
+                        <li class="w3-light-grey w3-padding-24">
+                            <!-- <button class="w3-button w3-white w3-padding-large w3-hover-black" href="#about">Sign Up</button> -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Grid/Pricing tables -->
+            </div>
+
+            <!-- Testimonials -->
+            <h3 class="w3-padding-24 w3-text-light-grey">Reviews</h3>
+            <img src="images/dino-icon.jpeg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
+            <p><span class="w3-large w3-margin-right">Daniel Krill</span> funny desc</p>
+            <p>John Doe saved us from a web disaster.</p><br>
+
+            <img src="images/cat-icon.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
+            <p><span class="w3-large w3-margin-right">Sam Webster</span> funny desc 2</p>
+            <p>No one is better than John Doe.</p>
+            <!-- End About Section -->
+        </div>
+
+        <!-- Portfolio Section -->
+        <div class="w3-padding-64 w3-content" id="photos">
+            <h2 class="w3-text-light-grey">Generate anything you can imagine here...</h2>
+            <hr style="width:200px" class="w3-opacity w3-bar">
+            <div>
+                <h3 class="w3-text-grey">Select options below to create your image.</h3>
+                <p></p>
+                <p></p>
+                <div class="w3-padding-16">
+
+                </div>
+                <p></p>
+                <p></p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <b class="w3-text-grey">What do you want the image to be of? </b>
+                            Enter one or a couple of words here, such as "a majestic horse running in field" or "apple"
+                            or "bird eating worm."
+                            <p></p>
+                            <label for="prompt" class="w3-text-grey w3-padding-16"><b>Prompt: </b></label>
+                            <input type="text" id="prompt" name="prompt">
+                            <p>
+                            <p></p>
+                            </p>
+                            <p></p>
+                            <label for="styles" class="w3-text-grey"><b class="w3-text-grey">What art style do you want?</b><p></p></label>
+                            <select name="styles" id="styles">
+                                3D Model
+                                <option value="sai-3d-model">3D Model</option>
+                                <option value="sai-analog-film">Analog Film</option>
+                                <option value="sai-anime">Anime</option>
+                                <option value="sai-cinematic">Cinematic</option>
+                                <option value="sai-comic book">Comic Book</option>
+                                <option value="sai-craft clay">Craft Clay</option>
+                                <option value="sai-digital art">Digital Art</option>
+                                <option value="sai-enhance">Enhance</option>
+                                <option value="sai-fantasy art">Fantasy Art</option>
+                                <option value="sai-isometric">Isometric</option>
+                                <option value="sai-line art">Line Art</option>
+                                <option value="sai-lowpoly">Lowpoly</option>
+                                <option value="sai-neonpunk">Neonpunk</option>
+                                <option value="sai-origami">Origami</option>
+                                <option value="sai-photographic">Photographic</option>
+                                <option value="sai-pixel art">Pixel Art</option>
+                                <option value="sai-texture">Texture</option>
+                            </select>
+                            <p></p>
+                            <p></p>
+                            <b class="w3-text-grey">
+                            What color scheme do you want your image to have?</b><p></p>
+                            <input type="checkbox" id="color1" name="color1" value="black and white">
+                            <label for="color1"> Black and white</label><br>
+                            <input type="checkbox" id="color2" name="color2" value="raindow">
+                            <label for="color2"> Rainbow</label><br>
+                            <input type="checkbox" id="color3" name="color3" value="red">
+                            <label for="color3"> Red</label><br>
+                            <input type="checkbox" id="color4" name="color4" value="blue">
+                            <label for="color4"> Blue</label><br>
+                            <input type="checkbox" id="color5" name="color5" value="green">
+                            <label for="color5"> Green</label><br>
+                            <input type="checkbox" id="color6" name="color6" value="yellow">
+                            <label for="color6"> Yellow</label><br>
+                            <input type="checkbox" id="color7" name="color7" value="orange">
+                            <label for="color7"> Orange</label><br>
+                            <input type="checkbox" id="color8" name="color8" value="pink">
+                            <label for="color8"> Pink</label><br>
+                            <input type="checkbox" id="color9" name="color9" value="purple">
+                            <label for="color9"> Purple</label><br>
+                            <input type="checkbox" id="color10" name="color10" value="gray">
+                            <label for="color10"> Gray</label><br>
+
+                            <p></p>
+                            <p></p>
+                            <input id="btn" class="generate" type="button" value="GENERATE" onclick=generateImg()>
+                        </div>
+                        <div class="col">
+                            <div class="image-container">
+                                <img src="images/kawaii.png" alt="image" style="width:100%">
+                                <div class="overlay-text">Your image</div>
+                            </div>
+                            <button class="w3-button w3-light-grey w3-padding-large w3-section">
+                                <i class="fa fa-download"></i> Download Image
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+                <p>
+
+                </p>
+            </div>
+
+            <!-- Grid for photos -->
+            <div class="w3-row-padding" style="margin:0 -16px">
+                <div class="w3-half">
+                    <img src="/w3images/wedding.jpg" style="width:100%">
+                    <img src="/w3images/rocks.jpg" style="width:100%">
+                    <img src="/w3images/sailboat.jpg" style="width:100%">
+                </div>
+
+                <div class="w3-half">
+                    <img src="/w3images/underwater.jpg" style="width:100%">
+                    <img src="/w3images/chef.jpg" style="width:100%">
+                    <img src="/w3images/wedding.jpg" style="width:100%">
+                    <img src="/w3images/p6.jpg" style="width:100%">
+                </div>
+                <!-- End photo grid -->
+            </div>
+            <!-- End Portfolio Section -->
+        </div>
+
+        <!-- Contact Section
+        <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
+            <h2 class="w3-text-light-grey">Contact Me</h2>
+            <hr style="width:200px" class="w3-opacity">
+
+            <div class="w3-section">
+                <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> University of Notre
+                    Dame, Indiana</p>
+                <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: +1 224 518 6764</p>
+                <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: ckuczun@nd.edu
+                </p>
+            </div><br>
+            <p>Questions or problems?</p>
+
+            <form action="/action_page.php" target="_blank">
+                <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
+                <p><input class="w3-input w3-padding-16" type="text" placeholder="Email" required name="Email"></p>
+                <p><input class="w3-input w3-padding-16" type="text" placeholder="Subject" required name="Subject"></p>
+                <p><input class="w3-input w3-padding-16" type="text" placeholder="Message" required name="Message"></p>
+                <p>
+                    <button class="w3-button w3-light-grey w3-padding-large" type="submit">
+                        <i class="fa fa-paper-plane"></i> SEND MESSAGE
+                    </button>
+                </p>
+            </form> -->
+            <!-- End Contact Section -->
+        <!-- </div> -->
+
+        <!-- Footer -->
+        <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+            <i class="fa fa-facebook-official w3-hover-opacity"></i>
+            <i class="fa fa-instagram w3-hover-opacity"></i>
+            <i class="fa fa-snapchat w3-hover-opacity"></i>
+            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+            <i class="fa fa-twitter w3-hover-opacity"></i>
+            <i class="fa fa-linkedin w3-hover-opacity"></i>
+            <p class="w3-medium">Inspired by template from <a href="https://www.w3schools.com/w3css/default.asp"
+                    target="_blank" class="w3-hover-text-green">w3.css</a></p>
+            <!-- End footer -->
+        </footer>
+
+        <!-- END PAGE CONTENT -->
+    </div>
+
+</body>
+
+</html>
