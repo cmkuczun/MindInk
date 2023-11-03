@@ -54,9 +54,7 @@ def get_data(data_path):
             print(e)
 
     return np.array(train_data), np.array(test_data)
-    # X_train, y_train = np.array(train_data)[:, 0], np.array(train_data)[:, 1].astype(int)
-    # X_test, y_test = np.array(test_data)[:, 0], np.array(test_data)[:, 1].astype(int)
-    # return X_train, y_train, X_test, y_test
+
 
 def main():
     # get train and test data
@@ -135,8 +133,6 @@ def main():
     print(f"y_test shape = {np.shape(y_test)}")
 
     reshaped_x_test_data = np.squeeze(x_test, axis=1)
-    # reshaped_y_train_data = np.squeeze(y_train, axis=1)
-    # reshaped_y_test_data = np.squeeze(y_test, axis=1)
 
     # define CNN with 3 convolutional layers
     print("defining CNN with 3 convolutional layers...")
