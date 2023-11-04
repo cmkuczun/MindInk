@@ -60,7 +60,13 @@ def get_data(data_path):
 
     return np.array(train_data), np.array(test_data)
 
-# classify an image for the SD api
+
+# get image from SD api
+def get_img():
+    
+    return img
+
+# classify image from the SD api
 def classify(img):
     # first, ask user what type of flower this is (display the options)
     # user input becomes ground truth label
@@ -175,7 +181,7 @@ def main():
     # train model for 500 epochs
     print("\ntraining model...")
     history = model.fit(reshaped_x_train_data, y_train, epochs = 500, validation_data = (reshaped_x_test_data, y_test))
-
+    model.save("cnn-5-flowers-model")
     acc = history.history['accuracy']
     val_acc = history.history['val_accuracy']
     loss = history.history['loss']

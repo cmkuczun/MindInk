@@ -55,7 +55,15 @@ def get_data(data_path):
 
     return np.array(train_data), np.array(test_data)
 
+# classify an image for the SD api
+def classify(img):
+    # first, ask user what type of flower this is (display the options)
+    # user input becomes ground truth label
+    # input the img through the classifier
+    return classification
 
+
+# execute training & validation of classifier
 def main():
     # get train and test data
     tulip_train, tulip_test = get_data(TULIP_DIR)
@@ -163,6 +171,7 @@ def main():
     # train model for 500 epochs
     print("\ntraining model...")
     history = model.fit(reshaped_x_train_data, y_train, epochs = 500, validation_data = (reshaped_x_test_data, y_test))
+    model.save("cnn-basic-model")
 
     acc = history.history['accuracy']
     val_acc = history.history['val_accuracy']
