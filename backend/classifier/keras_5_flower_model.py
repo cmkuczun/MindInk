@@ -76,18 +76,6 @@ def main():
     rose_train, rose_test = get_data(ROSE_DIR)
     dandelion_train, dandelion_test = get_data(DANDELION_DIR)
     sunflower_train, sunflower_test = get_data(SUNFLOWER_DIR)
-    # add labels
-    t_train_labels = np.array([0] * 787)
-    t_test_labels = np.array([0] * 197)
-    d_train_labels = np.array([1] * 611)
-    d_test_labels = np.array([1] * 154)
-    dand_train_labels = np.array([2] * len(dandelion_train))
-    dand_test_labels = np.array([2])
-
-    # join train
-    # training = np.concatenate((tulip_train, daisy_train))
-    #join test
-    # testing = np.concatenate((tulip_test, daisy_test))
 
     # visualize data
     l = []
@@ -124,21 +112,6 @@ def main():
         for feature in testing_data[label]:
             x_test.append(feature)
             y_test.append(label)
-
-
-    # for feature, label in zip(tulip_train, t_train_labels):
-    #     x_train.append(feature)
-    #     y_train.append(label)
-    # for feature, label in zip(daisy_train, d_train_labels):
-    #     x_train.append(feature)
-    #     y_train.append(label)
-    
-    # for feature, label in zip(tulip_test, t_test_labels):
-    #     x_test.append(feature)
-    #     y_test.append(label)
-    # for feature, label in zip(daisy_test, d_test_labels):
-    #     x_test.append(feature)
-    #     y_test.append(label)
 
     # normalize data
     x_train = np.array(x_train) / 255
