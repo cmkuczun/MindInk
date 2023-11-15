@@ -54,7 +54,7 @@ import os
 import requests
 import json
 
-def get_img(prompt):
+def get_image(prompt):
     url = "https://stablediffusionapi.com/api/v3/text2img"
     
     payload = {
