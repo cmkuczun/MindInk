@@ -7,7 +7,7 @@ import os
 
 # # API endpoint and your API key
 # url = "https://stablediffusionapi.com/api/v3/text2img"
-# api_key = "Jct9YahzVLelCHXwiZZlI0pk7HsPBKwNv88Xs4KZHF0gBhTmMl14hfQ4PIpY"
+# api_key = ""
 
 # # Text input for generating an image
 # text = "rose flower"
@@ -19,7 +19,7 @@ import os
 
 # # Request body as a dictionary
 # data = {
-#     "key": "Jct9YahzVLelCHXwiZZlI0pk7HsPBKwNv88Xs4KZHF0gBhTmMl14hfQ4PIpY",
+#     "key": "",
 #     "prompt": text,
 #     "width": "512",
 #     "height": "512",
@@ -58,7 +58,7 @@ def get_image(prompt):
     url = "https://stablediffusionapi.com/api/v3/text2img"
     
     payload = {
-        "key": "Jct9YahzVLelCHXwiZZlI0pk7HsPBKwNv88Xs4KZHF0gBhTmMl14hfQ4PIpY",
+        "key": "",
         "prompt": prompt,
         "width": "512",
         "height": "512",
