@@ -77,9 +77,11 @@ def get_image(prompt):
         image_url = response_data.get("output")
 
         # Download the image
+        print("getting image response")
         image_response = requests.get(image_url[0])
         if image_response.status_code == 200:
             # Open and display the image
+            print("attempting to open & display image")
             image_bytes = BytesIO(image_response.content)
             image = Image.open(image_bytes)
             image.show()
@@ -87,15 +89,17 @@ def get_image(prompt):
             filename = os.path.basename(image_url[0])
 
             # Open the file in binary write mode and save the image
+            print("saving the image")
             with open(filename, 'wb') as file:
                 file.write(response.content)
             print(f"Image downloaded as {filename}")
         else:
             print("Failed to download the image.")
 
+        print("successfully did stuff")
         return json_data["output"]
 
 if __name__ == "__main__":
     prompt = "daisy flower"
-    print(f"response = {get_img(prompt)}")
+    print(f"response = {get_image(prompt)}")
 
