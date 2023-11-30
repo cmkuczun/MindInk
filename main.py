@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+'''
+main.py: tests overall flow that is ultimately implemented in project_ui.py
+'''
+
 # imports
 from backend.classifier.predict import get_model, predict, get_prompt, format_image, get_image
 

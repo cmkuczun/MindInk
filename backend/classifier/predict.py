@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+'''
+predict.py: contains all methods required to make API calls, save images, 
+            format images, and make predictions using the classifier
+'''
+
 # imports
 from keras.models import load_model
 from keras.preprocessing import image
@@ -16,15 +21,7 @@ CLASSIFIER = "/Users/claudia/intro-to-ai/ai-proj-mindink/MindInk/backend/classif
 
 
 # format/process image for prediction
-def format_image(image_path):
-    print(f"type of image_path: {type(image_path)}")
-    # with open(image_path, "r") as f:
-    #     img_crop_pil = Image.fromarray(np.array(list(f)))
-    #     byte_io = BytesIO()
-    #     img_crop_pil.save(byte_io, format="JPG")
-    #     jpg_buffer = byte_io.getvalue()
-    #     byte_io.close()
-
+def format_image(image_path):  
     # adjust target size to match model's input size
     img = image.load_img(image_path, target_size=(180, 180))  
     img = image.img_to_array(img)
@@ -35,9 +32,10 @@ def format_image(image_path):
 
     
 # actually get the image with prompt
-# TODO: build user prompt into actual request being sent!
 def get_image(prompt):
     url = "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image"
+
+    text = f"photograph of {prompt}"
 
     body = {
     "steps": 40,
@@ -48,7 +46,7 @@ def get_image(prompt):
     "samples": 1,
     "text_prompts": [
         {
-        "text": "photograph of carnations",
+        "text": text,
         "weight": 1
         },
         {
@@ -62,9 +60,8 @@ def get_image(prompt):
     "Accept": "application/json",
     "Content-Type": "application/json",
     "Authorization": "Bearer sk-KvlbMwLxHqnqVe2oHgCwtMYTguPsYZzfqHq9w2gUJ1AssMQO", 
-    } # TODO: REMOVE API KEY?
+    }
 
-    print("sending post response to api url...\n")
     try:
         response = requests.post(
         url,
@@ -74,20 +71,17 @@ def get_image(prompt):
 
         if response.status_code != 200:
             raise Exception("Non-200 response: " + str(response.text))
-        print("got past status check")
         data = response.json()
 
         # make sure the out directory exists
-        # if not os.path.exists("./out"):
-        #     os.makedirs("./out")
+        if not os.path.exists("./out"):
+            os.makedirs("./out")
 
         image_path = ""
         for i, image in enumerate(data["artifacts"]):
             image_path = f'./out/txt2img_{image["seed"]}.png'
-            print(image_path)
             with open(f'./out/txt2img_{image["seed"]}.png', "wb") as f:
                 f.write(base64.b64decode(image["base64"]))
-            print("success!\n")
         
             return True, image_path
     except:
@@ -114,16 +108,12 @@ def predict(img, model):
                     'dandelion', 'iris', 'rose', 'sunflower', 'tulip', 'water_lily']
     
     # predict class for image
-    # new_img = format_image(img)
     new_img = np.array([list(img)])
     reshaped_img = np.squeeze(new_img, axis=1)
     predictions = model.predict(reshaped_img)
 
     # get predicted class
     output = np.argmax(predictions)
-    # print(f"PREDICTED CLASS = {class_names[output]}")
-    # y_classes = predictions.argmax(axis=-1)
-    # print(f"OUTPUT = {y_classes}")
     
     return class_names[output]
 
