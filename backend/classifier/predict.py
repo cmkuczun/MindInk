@@ -17,13 +17,13 @@ from io import BytesIO
 
 
 # constants
-CLASSIFIER = "/Users/claudia/intro-to-ai/ai-proj-mindink/MindInk/backend/classifier/resnet50_model"
+CLASSIFIER = "/Users/claudia/intro-to-ai/ai-proj-mindink/MindInk/backend/classifier/cnn-5-flowers-model"
 
 
 # format/process image for prediction
 def format_image(image_path):  
     # adjust target size to match model's input size
-    img = image.load_img(image_path, target_size=(180, 180))  
+    img = image.load_img(image_path, target_size=(224, 224))  # TODO: change back to 180x180
     img = image.img_to_array(img)
     img = np.expand_dims(img, axis=0)
     img = img / 255.0 # normalize
@@ -103,10 +103,11 @@ def get_prompt():
 
 # assign label to image
 def predict(img, model):
-    class_names = [ 'astilbe', 'bellflower', 'black_eyed_susan', 'calendula', \
-                    'california_poppy', 'carnation', 'common_daisy', 'coreopsis', \
-                    'dandelion', 'iris', 'rose', 'sunflower', 'tulip', 'water_lily']
+    # class_names = [ 'astilbe', 'bellflower', 'black_eyed_susan', 'calendula', \
+    #                 'california_poppy', 'carnation', 'common_daisy', 'coreopsis', \
+    #                 'dandelion', 'iris', 'rose', 'sunflower', 'tulip', 'water_lily']
     
+    class_names = ['Tulip', 'Daisy', 'Rose', 'Sunflower', 'Dandelion']
     # predict class for image
     new_img = np.array([list(img)])
     reshaped_img = np.squeeze(new_img, axis=1)

@@ -41,10 +41,11 @@ def main():
 
     print("*"* 41)
     print("{FLOWER OPTIONS} ")
-    print("  ASTILBE, BLACK EYED SUSAN, CALENDULA,")
-    print("  CALIFORNIA POPPY, CARNATION, TULIP,")
-    print("  COMMON DAISY, COREOPSIS, DANDELION,")
-    print("  IRIS, ROSE, SUNFLOWER, WATER LILY")
+    print("  TULIP, DAISY, ROSE, SUNFLOWER, DANDELION")
+    # print("  ASTILBE, BLACK EYED SUSAN, CALENDULA,")
+    # print("  CALIFORNIA POPPY, CARNATION, TULIP,")
+    # print("  COMMON DAISY, COREOPSIS, DANDELION,")
+    # print("  IRIS, ROSE, SUNFLOWER, WATER LILY")
     print("*"* 41)
     time.sleep(1)
 

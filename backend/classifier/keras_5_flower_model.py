@@ -205,7 +205,7 @@ def main():
 
     predictions = model.predict_classes(x_test)
     predictions = predictions.reshape(1,-1)[0]
-    print(classification_report(y_test, predictions, target_names = ['Tulip (Class 0)','Daisy (Class 1)', 'Rose (Class 2)', 'Sunflower (Class 3)', 'Dandelion (Class 4)']))
+    print(classification_report(y_test, predictions, target_names = ['Tulip', 'Daisy', 'Rose', 'Sunflower', 'Dandelion']))
 
 
 if __name__ == "__main__":
