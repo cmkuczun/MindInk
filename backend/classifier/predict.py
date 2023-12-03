@@ -17,7 +17,7 @@ from io import BytesIO
 
 
 # constants
-CLASSIFIER = "/Users/claudia/intro-to-ai/MindInk/backend/classifier/cnn-5-flowers-model"
+CLASSIFIER = "/Users/claudia/intro-to-ai/MindInk/backend/classifier/cnn-5-flowers-model" # NOTE: CHANGE THIS LINE TO RUN PROJECT
 # Uncomment for ResNet50 model
 # CLASSIFIER = "/Users/claudia/intro-to-ai/MindInk/backend/classifier/resnet50_model"
 
