@@ -1,8 +1,6 @@
 #! /usr/bin/env python3
 
 # imports
-from random import triangular
-from ssl import DefaultVerifyPaths
 import matplotlib.pyplot as plt
 import seaborn as sns
 

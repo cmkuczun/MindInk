@@ -17,13 +17,15 @@ from io import BytesIO
 
 
 # constants
-CLASSIFIER = "/Users/claudia/intro-to-ai/ai-proj-mindink/MindInk/backend/classifier/cnn-5-flowers-model"
-
+CLASSIFIER = "/Users/claudia/intro-to-ai/MindInk/backend/classifier/cnn-5-flowers-model"
+# Uncomment for ResNet50 model
+# CLASSIFIER = "/Users/claudia/intro-to-ai/MindInk/backend/classifier/resnet50_model"
 
 # format/process image for prediction
 def format_image(image_path):  
     # adjust target size to match model's input size
-    img = image.load_img(image_path, target_size=(224, 224))  # TODO: change back to 180x180
+    img = image.load_img(image_path, target_size=(224, 224))  # Change back to 180x180 for ResNet50 model
+    # img = image.load_img(image_path, target_size=(180, 180))
     img = image.img_to_array(img)
     img = np.expand_dims(img, axis=0)
     img = img / 255.0 # normalize
@@ -103,6 +105,7 @@ def get_prompt():
 
 # assign label to image
 def predict(img, model):
+    # Uncomment to use the ResNet50 model instead of basic CNN
     # class_names = [ 'astilbe', 'bellflower', 'black_eyed_susan', 'calendula', \
     #                 'california_poppy', 'carnation', 'common_daisy', 'coreopsis', \
     #                 'dandelion', 'iris', 'rose', 'sunflower', 'tulip', 'water_lily']

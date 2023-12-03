@@ -42,6 +42,7 @@ def main():
     print("*"* 41)
     print("{FLOWER OPTIONS} ")
     print("  TULIP, DAISY, ROSE, SUNFLOWER, DANDELION")
+    # Uncomment for options for ResNet50 model
     # print("  ASTILBE, BLACK EYED SUSAN, CALENDULA,")
     # print("  CALIFORNIA POPPY, CARNATION, TULIP,")
     # print("  COMMON DAISY, COREOPSIS, DANDELION,")
@@ -94,7 +95,7 @@ def main():
 
             # Clean up labels: replace any underscores with spaces
             res.replace("_", " ")
-            print(f"\nResNet50 predicted class: {res.upper()}")
+            print(f"\nClassifier predicted class: {res.upper()}")
             
             # Ask user whether this image matches what was 
             classifier_res = input("\n[USER INPUT] Was the image classified correctly (Y/N)? ").upper()

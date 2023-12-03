@@ -24,12 +24,13 @@ import numpy as np
 
 
 # constants
-DATA_DIR = '/Users/claudia/MindInk/MindInk/backend/data/flowers-four-types-dataset'
-TULIP_DIR = '/Users/claudia/MindInk/MindInk/backend/data/flowers-four-types-dataset/tulip'
-DAISY_DIR = '/Users/claudia/MindInk/MindInk/backend/data/flowers-four-types-dataset/daisy'
-ROSE_DIR = '/Users/claudia/MindInk/MindInk/backend/data/flowers-four-types-dataset/rose'
-SUNFLOWER_DIR = '/Users/claudia/MindInk/MindInk/backend/data/flowers-four-types-dataset/sunflower'
-DANDELION_DIR = '/Users/claudia/MindInk/MindInk/backend/data/flowers-four-types-dataset/dandelion'
+# NOTE: to retrain this model locally, must change to location of dataset on local/personal computer
+DATA_DIR =      '/Users/claudia/intro-to-ai/MindInk/backend/data/flowers-four-types-dataset'
+TULIP_DIR =     '/Users/claudia/intro-to-ai/MindInk/backend/data/flowers-four-types-dataset/tulip'
+DAISY_DIR =     '/Users/claudia/intro-to-ai/MindInk/backend/data/flowers-four-types-dataset/daisy'
+ROSE_DIR =      '/Users/claudia/intro-to-ai/MindInk/backend/data/flowers-four-types-dataset/rose'
+SUNFLOWER_DIR = '/Users/claudia/intro-to-ai/MindInk/backend/data/flowers-four-types-dataset/sunflower'
+DANDELION_DIR = '/Users/claudia/intro-to-ai/MindInk/backend/data/flowers-four-types-dataset/dandelion'
 
 IMG_SIZE = 224
 
@@ -59,19 +60,6 @@ def get_data(data_path):
             print(e)
 
     return np.array(train_data), np.array(test_data)
-
-
-# get image from SD api
-def get_img():
-    
-    return img
-
-# classify image from the SD api
-def classify(img):
-    # first, ask user what type of flower this is (display the options)
-    # user input becomes ground truth label
-    # input the img through the classifier
-    return classification
 
 
 # execute training & validation of classifier
