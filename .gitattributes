@@ -1,0 +1,2 @@
+backend/classifier/resnet_50_fin/ filter=lfs diff=lfs merge=lfs -text
+backend/classifier/resnet_50_fin/variables/variables.data-00000-of-00001 filter=lfs diff=lfs merge=lfs -text
