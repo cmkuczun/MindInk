@@ -33,7 +33,7 @@ def main():
         print("   - ")
         time.sleep(.75)
 
-    print("\nWelcome to MINDINK: generate images using image generation model, and classify them using the ResNet50 image classifier!\n\n")
+    print("\nWelcome to MINDINK: generate images using image generation model, and classify them using an image classifier!\n\n")
     
 
     print("*"* 41)
@@ -90,8 +90,14 @@ def main():
             print()
             res = predict(new_img, model)
 
+            # ResNet50 predictions below
+            # new_img = np.array([list(new_img)])
+            # reshaped_img = np.squeeze(new_img, axis=1)
+            # predictions = model.predict(reshaped_img)
+            # res = resnet_decode_predictions(predictions)
+
             # Clean up labels: replace any underscores with spaces
-            res.replace("_", " ")
+            res.replace("_", " ") 
             print(f"\nClassifier predicted class: {res.upper()}")
             
             # Ask user whether this image matches what was 

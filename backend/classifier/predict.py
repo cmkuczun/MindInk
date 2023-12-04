@@ -13,12 +13,14 @@ import os
 import base64
 from PIL import Image
 from io import BytesIO
+import json
 
 
 # Constants
 DIRNAME = os.path.dirname(__file__)
 CLASSIFIER = os.path.join(DIRNAME, 'cnn-5-flowers-model')
-# CLASSIFIER = os.path.join(DIRNAME, 'resnet50_model') # Uncomment for ResNet50
+# CLASSIFIER = os.path.join(DIRNAME, 'resnet50_fin') # Uncomment for ResNet50
+
 
 
 # Format/process image for prediction
@@ -107,7 +109,7 @@ def get_prompt():
 # Assign label to image
 def predict(img, model):
     # Uncomment for ResNet50
-    # class_names = [ 'astilbe', 'bellflower', 'black_eyed_susan', 'calendula', \
+    # class_names = [ 'astilbe', 'black-eyed susan', 'black_eyed_susan', 'calendula', \
     #                 'california_poppy', 'carnation', 'common_daisy', 'coreopsis', \
     #                 'dandelion', 'iris', 'rose', 'sunflower', 'tulip', 'water_lily']
     
@@ -121,6 +123,29 @@ def predict(img, model):
     # Get predicted class
     output = np.argmax(predictions)
     return class_names[output]
+
+
+def resnet_decode_predictions(preds, top=1, class_list_path='index.json'):
+  if len(preds.shape) != 2 or preds.shape[1] != 14: # your classes number
+    raise ValueError('`decode_predictions` expects '
+                     'a batch of predictions '
+                     '(i.e. a 2D array of shape (samples, 14)). '
+                     'Found array with shape: ' + str(preds.shape))
+  json_path = os.path.join(DIRNAME, class_list_path)
+  index_list = json.load(open(json_path))
+  results = []
+  for pred in preds:
+    top_indices = pred.argsort()[-top:][::-1]
+    result = [tuple(index_list[str(i)]) + (pred[i],) for i in top_indices]
+    result.sort(key=lambda x: x[2], reverse=True)
+    results.append(result)
+
+  res = results[0][0]
+  str_res = ""
+  for elem in res:
+      if isinstance(elem, str):
+          str_res += elem
+  return str_res
 
 
 if __name__ == "__main__":
