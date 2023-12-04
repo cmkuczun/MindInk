@@ -10,7 +10,6 @@ project_ui.py:  final product that allows user to generate flower images using
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
-from main import *
 from backend.classifier.predict import *
 import time
 

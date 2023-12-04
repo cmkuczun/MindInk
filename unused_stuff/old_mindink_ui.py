@@ -1,7 +1,7 @@
 from tkinter import Tk
 from tkinter import *
 from PIL import Image, ImageTk
-from main import *
+from unused_stuff.main import *
 from backend.classifier.predict import *
 
 #Create object 
