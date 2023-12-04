@@ -5,7 +5,6 @@ predict.py: contains all methods required to make API calls, save images,
             format images, and make predictions using the classifier
 '''
 
-# imports
 from keras.models import load_model
 from keras.preprocessing import image
 import numpy as np
@@ -16,15 +15,16 @@ from PIL import Image
 from io import BytesIO
 
 
-# constants
-CLASSIFIER = "/Users/claudia/intro-to-ai/MindInk/backend/classifier/cnn-5-flowers-model" # NOTE: CHANGE THIS LINE TO RUN PROJECT
-# Uncomment for ResNet50 model
-# CLASSIFIER = "/Users/claudia/intro-to-ai/MindInk/backend/classifier/resnet50_model"
+# Constants
+DIRNAME = os.path.dirname(__file__)
+CLASSIFIER = os.path.join(DIRNAME, 'cnn-5-flowers-model')
+# CLASSIFIER = os.path.join(DIRNAME, 'resnet50_model') # Uncomment for ResNet50
 
-# format/process image for prediction
+
+# Format/process image for prediction
 def format_image(image_path):  
-    # adjust target size to match model's input size
-    img = image.load_img(image_path, target_size=(224, 224))  # Change back to 180x180 for ResNet50 model
+    # Adjust target size to match model's input size
+    img = image.load_img(image_path, target_size=(224, 224))  # Change to 180x180 for ResNet50
     # img = image.load_img(image_path, target_size=(180, 180))
     img = image.img_to_array(img)
     img = np.expand_dims(img, axis=0)
@@ -33,7 +33,7 @@ def format_image(image_path):
     return img
 
     
-# actually get the image with prompt
+# Actually get the image with prompt
 def get_image(prompt):
     url = "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image"
 
@@ -91,34 +91,35 @@ def get_image(prompt):
         return False, ""
 
         
-# get model instance
+# Get model instance
 def get_model():
     model = load_model(CLASSIFIER)
+    print(CLASSIFIER)
     return model
 
 
-# ask user for flower
+# Ask user for flower
 def get_prompt():
     prompt = input("what type of flower do you want to see an image of? ")
     return prompt
 
 
-# assign label to image
+# Assign label to image
 def predict(img, model):
-    # Uncomment to use the ResNet50 model instead of basic CNN
+    # Uncomment for ResNet50
     # class_names = [ 'astilbe', 'bellflower', 'black_eyed_susan', 'calendula', \
     #                 'california_poppy', 'carnation', 'common_daisy', 'coreopsis', \
     #                 'dandelion', 'iris', 'rose', 'sunflower', 'tulip', 'water_lily']
     
     class_names = ['Tulip', 'Daisy', 'Rose', 'Sunflower', 'Dandelion']
-    # predict class for image
+    
+    # Predict class for image
     new_img = np.array([list(img)])
     reshaped_img = np.squeeze(new_img, axis=1)
     predictions = model.predict(reshaped_img)
 
-    # get predicted class
+    # Get predicted class
     output = np.argmax(predictions)
-    
     return class_names[output]
 
 

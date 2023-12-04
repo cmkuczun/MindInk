@@ -34,9 +34,7 @@ def main():
         print("   - ")
         time.sleep(.75)
 
-    # print("-"*125)
     print("\nWelcome to MINDINK: generate images using image generation model, and classify them using the ResNet50 image classifier!\n\n")
-    # print("-"*125)
     
 
     print("*"* 41)

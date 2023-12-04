@@ -1,45 +1,34 @@
 #! /usr/bin/env python3
 
-# imports
-from random import triangular
-from ssl import DefaultVerifyPaths
-from unicodedata import category
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-import keras
 from keras.models import Sequential
-from keras.layers import Dense, Conv2D , MaxPool2D , Flatten , Dropout 
+from keras.layers import Dense, Conv2D, MaxPool2D, Flatten, Dropout 
 from keras.preprocessing.image import ImageDataGenerator
-from keras.optimizers import Adam
-
-from sklearn.metrics import classification_report,confusion_matrix
-
+from sklearn.metrics import classification_report
 import tensorflow as tf
-
 import cv2
 import os
-
 import numpy as np
 
 
-# constants
-# NOTE: To retrain this model locally, must change to location of dataset on local/personal computer
-DATA_DIR =      '/Users/claudia/intro-to-ai/MindInk/backend/data/flowers-four-types-dataset'
-TULIP_DIR =     '/Users/claudia/intro-to-ai/MindInk/backend/data/flowers-four-types-dataset/tulip'
-DAISY_DIR =     '/Users/claudia/intro-to-ai/MindInk/backend/data/flowers-four-types-dataset/daisy'
-ROSE_DIR =      '/Users/claudia/intro-to-ai/MindInk/backend/data/flowers-four-types-dataset/rose'
-SUNFLOWER_DIR = '/Users/claudia/intro-to-ai/MindInk/backend/data/flowers-four-types-dataset/sunflower'
-DANDELION_DIR = '/Users/claudia/intro-to-ai/MindInk/backend/data/flowers-four-types-dataset/dandelion'
-
+# Constants
+DIRNAME = os.path.dirname(__file__)
+DATA_DIR = os.path.join(DIRNAME, '../data/flowers-four-types-dataset')
+TULIP_DIR = os.path.join(DIRNAME, '../data/flowers-four-types-dataset/tulip')
+DAISY_DIR = os.path.join(DIRNAME, '../data/flowers-four-types-dataset/daisy')
+ROSE_DIR = os.path.join(DIRNAME, '../data/flowers-four-types-dataset/rose')
+SUNFLOWER_DIR = os.path.join(DIRNAME, '../data/flowers-four-types-dataset/sunflower')
+DANDELION_DIR = os.path.join(DIRNAME, '../data/flowers-four-types-dataset/dandelion')
 IMG_SIZE = 224
 
-# load data
+
+# Load data
 def get_data(data_path):
     train_data = [] 
     test_data = []
 
-    # training
+    # Training
     path = os.path.join(data_path, 'train')
     for img in os.listdir(path):
         try:
@@ -49,7 +38,7 @@ def get_data(data_path):
         except Exception as e:
             print(e)
 
-    # testing
+    # Testing
     path = os.path.join(data_path, 'test')
     for img in os.listdir(path):
         try:
@@ -62,16 +51,16 @@ def get_data(data_path):
     return np.array(train_data), np.array(test_data)
 
 
-# execute training & validation of classifier
+# Execute training & validation of classifier
 def main():
-    # get train and test data
+    # Get train and test data
     tulip_train, tulip_test = get_data(TULIP_DIR)
     daisy_train, daisy_test = get_data(DAISY_DIR)
     rose_train, rose_test = get_data(ROSE_DIR)
     dandelion_train, dandelion_test = get_data(DANDELION_DIR)
     sunflower_train, sunflower_test = get_data(SUNFLOWER_DIR)
 
-    # visualize data
+    # Visualize data
     l = []
     for i in tulip_train:
         l.append("tulip")
@@ -87,7 +76,7 @@ def main():
     sns.countplot(l)
     # plt.show( )
 
-    # preprocessing
+    # Preprocessing
     x_train = []
     y_train = []
     x_test = []
@@ -107,7 +96,7 @@ def main():
             x_test.append(feature)
             y_test.append(label)
 
-    # normalize data
+    # Normalize data
     x_train = np.array(x_train) / 255
     x_test = np.array(x_test) / 255
 
@@ -118,7 +107,7 @@ def main():
     y_test = np.array(y_test)
     print("data has been normalized")
 
-    # augment training data
+    # Augment training data
     datagen = ImageDataGenerator(
         featurewise_center=False,               # set input mean to 0 over the dataset
         samplewise_center=False,                # set each sample mean to 0
@@ -140,7 +129,7 @@ def main():
 
     reshaped_x_test_data = np.squeeze(x_test, axis=1)
 
-    # define CNN with 3 convolutional layers
+    # Define CNN with 3 convolutional layers
     print("defining CNN with 3 convolutional layers...")
     model = Sequential()
     model.add(Conv2D(32,3,padding="same", activation="relu", input_shape=(IMG_SIZE,IMG_SIZE,3)))
@@ -166,7 +155,7 @@ def main():
                     loss = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),\
                     metrics = ['accuracy'])
 
-    # train model for 500 epochs
+    # Train model for 500 epochs
     print("\ntraining model...")
     history = model.fit(reshaped_x_train_data, y_train, epochs = 500, validation_data = (reshaped_x_test_data, y_test))
     model.save("CNN-RETRAIN-MODEL")
